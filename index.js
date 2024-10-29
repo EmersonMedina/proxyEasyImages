@@ -10,7 +10,7 @@ app.use(cors({
 app.use((req, res, next) => {
   const apiKey = req.headers['x-api-key'];
   if (apiKey === process.env.API_KEY) {
-    res.header("Access-Control-Allow-Origin", "YOUR-DOMAIN.TLD"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Origin", process.env.FRONTEND_URL); // update to match the domain you will make the request from
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   } else {
