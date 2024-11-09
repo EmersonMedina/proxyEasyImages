@@ -3,8 +3,6 @@ const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const app = express();
 
-// Configuración para confiar en proxies
-app.set('trust proxy', true);
 
 app.use(cors({
   origin: process.env.FRONTEND_URL // URL de tu frontend
@@ -25,6 +23,9 @@ const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutos
   max: 100, // Límite de 100 solicitudes
 });
+
+// Configuración para confiar en proxies
+app.set('trust proxy', true);
 
 app.use(limiter);
 
